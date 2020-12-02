@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Regular';
+}
+
+.container{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header{
+    background-color: #d6382d;
+}
+header .header-content{
+    display: flex;
+    align-items: center;
+    color: #FFF;
+}
+
+header .header-nav{
+    margin-left: auto;
+    display: flex;
+}
+
+header .header-nav-item{
+    padding: 10px;
+    transition: 0.3s background-color;
+}
+
+header .header-nav-item:hover{
+    cursor: pointer;
+    background-color:  #b8261c;
+}
+
+main{
+    margin-top: 16px;
+}
+
+main .form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

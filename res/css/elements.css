@@ -1,0 +1,36 @@
+.form-action{
+    border: 1px solid #333;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.form-title{
+    margin-bottom: 16px;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.form-group>*{margin-right: 10px;}
+.form-group>*:last-child{margin-right: 0px;}
+
+.form-group-input{
+    border: 1px solid #333;
+    padding: 10px 16px;
+    border-radius: 16px;
+    font-family: 'Regular';
+}
+.form-group-input::placeholder{
+    color: #333;
+}
+
+.form-group-button{
+    border: 1px solid #333;
+    padding: 10px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: 'Regular';
+}

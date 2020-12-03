@@ -63,8 +63,6 @@ $(document).ready(function(){
                 type: "POST",
                 url: url,
                 data: formData,
-                processData: false,
-                contentType: false,
                 success: function(data)
                 {
                     if(data == 'success')
@@ -94,7 +92,14 @@ $(document).ready(function(){
             data: form.serialize(),
             success: function(data)
             {
-                alert(data); 
+                if(data == 'success')
+                {
+                    $(location).attr('href', '/profile/');
+                }
+                else
+                {
+                    alert(data);
+                }
             }
         });
     

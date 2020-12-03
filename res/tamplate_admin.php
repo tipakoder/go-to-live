@@ -15,14 +15,8 @@
             <h2 class="header-logo">Будь здоров!</h2>
 
             <nav class="header-nav">
-                <?if(!$auth){?>
-                    <div class="header-nav-item link" href="/login/">Войти</div>
-                    <div class="header-nav-item link" href="/reg/">Создать аккаунт</div>
-                <?}else{?>
-                    <div class="header-nav-item link" href="/write/">Запись на приём</div>
-                    <div class="header-nav-item link" href="/profile/">Личный кабинет</div>
-                    <div class="header-nav-item link" href="/logout/">Выйти</div>
-                <?}?>
+                <div class="header-nav-item link" href="/doctor/new/">Добавить врача</div>
+                <div class="header-nav-item link" href="/logout/">Выйти</div>
             </nav>
         </div>
     </header>

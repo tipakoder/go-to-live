@@ -5,7 +5,7 @@ class Connection
     //Объект работы
     protected $pdo;
     //Текущий сет настроек
-    protected $config = ['host' => '127.0.0.1', 'dbname' => "live", 'charset' => 'utf8', 'user' => 'root', 'passwd' => 'root'];
+    protected $config = ['host' => '127.0.0.1', 'dbname' => "live", 'charset' => 'utf8', 'user' => 'root', 'passwd' => ''];
     //Инициализируем
     protected function init()
     {

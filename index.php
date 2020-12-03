@@ -1,8 +1,10 @@
 <?
 //описываем директиву для дальнейших require
 define('ROOTDR', __DIR__);
-//подключения базы данных
+//подключаем класс для работы с базой по средствам PDO
 require_once 'db.php';
+//создаём непрерывное подключение к базе
+$db = new Connection();
 //определение текущей страницы
 $curReq = trim($_SERVER['REQUEST_URI'], '/');
 $curReqMethod = $_SERVER['REQUEST_METHOD'];
@@ -19,6 +21,15 @@ if($curReqMethod == "GET")
         case "reg":
             loadPage("reg", "Будь здоров — регистрация!");
             break;
+        case "profile":
+            loadProfile();
+            break;
+        case "logout":
+            rem_session();
+            break;
+        case "admin":
+            loadAdminPage('main_admin', 'Будь здоров — панель админа!');
+            break;
     }
 } 
 else if($curReqMethod == "POST")
@@ -34,18 +45,24 @@ else if($curReqMethod == "POST")
     }
 }
 //загрузка страницы
-function loadPage($name, $title)
+function loadPage($name, $title, $data = [])
 {
     $params = [
         'tamplate' => $name,
-        'title' => $title
+        'title' => $title,
+        'auth' => get_cclient() != null
     ];
+    if($data != [])
+    {
+        $params = array_merge($params, $data);
+    }
     extract($params);
     require_once 'res/tamplate.php';
 }
 //регистрация аккаунта
 function reg_acc()
 {
+    global $db;
     if(get_cclient() != null)
     {
         exit('Вы уже авторизованы!');
@@ -59,8 +76,6 @@ function reg_acc()
     $password = $_POST['password'];
     $photo = $_FILES['photo'];
     $errors = [];
-    //создаём непрерывное подключение к базе
-    $db = new Connection();
     //проверяем уникальность email
     if($db->query('SELECT id FROM accs WHERE email = ? LIMIT 1', [$email]) != null)
     {
@@ -87,7 +102,7 @@ function reg_acc()
             if (move_uploaded_file($photo['tmp_name'], $photo_filename)) 
             {
                 //создаём сессию
-                if(gen_session($nId, $db))
+                if(gen_session($nId))
                 {
                     exit('success');
                 }
@@ -105,6 +120,8 @@ function reg_acc()
 //войти в аккаунт
 function login_acc()
 {
+    global $db;
+
     if(get_cclient() != null)
     {
         exit('ERROR: Вы уже авторизованы!');
@@ -113,15 +130,13 @@ function login_acc()
     $email = $_POST['email'];
     $password = $_POST['password'];
     $errors = [];
-    //создаём непрерывное подключение к базе
-    $db = new Connection();
     //ищем аккаунт с введённым email
     if( ($acc = $db->query('SELECT id, password FROM accs WHERE email = ? LIMIT 1', [$email])[0]) != null)
     {
         if(password_verify($password, $acc['password']))
         {
             //создаём сессию
-            if(gen_session($acc['id'], $db))
+            if(gen_session($acc['id']))
             {
                 exit('success');
             }
@@ -140,8 +155,10 @@ function login_acc()
     exit();
 }
 //создание сессии
-function gen_session($id, $db)
+function gen_session($id)
 {
+    global $db;
+
     $key = hash('ripemd160', time() . $id . rand_str());
     $ip = $_SERVER['REMOTE_ADDR'];
     if($db->execute('INSERT INTO accs_sess (aid, key_sess, ip) VALUES (?, ?, ?)', [$id, $key, $ip]))
@@ -158,10 +175,13 @@ function gen_session($id, $db)
 function rem_session()
 {
     setcookie('session', null, time() - 3600, '/');
+    header('Location: /');
 }
 //получение текущего клиента
 function get_cclient()
 {
+    global $db;
+
     $gu = null;
     if(isset($_COOKIE['session']))
     {
@@ -171,7 +191,8 @@ function get_cclient()
         a.firstname as firstname,
         a.lastname as lastname,
         a.middlename as middlename,
-        a.email as email
+        a.email as email,
+        a.who as who
         FROM accs a, accs_sess s
         WHERE a.id = s.aid AND
         s.key_sess = ?
@@ -188,7 +209,36 @@ function rand_str($count = 8)
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randstring = '';
     for ($i = 0; $i < $count; $i++) {
-        $randstring = $characters[rand(0, strlen($characters))];
+        $randstring.= $characters[rand(0, strlen($characters) - 1)];
     }
     return $randstring;
+}
+//загрузка страницы профиля пользователя
+function loadProfile()
+{
+    $user_data = get_cclient();
+    if($user_data == null)
+    {
+        exit('Сессия недействительна');
+    }
+
+    loadPage('profile', 'Будь здоров — личный кабинет', ['user' => $user_data]);
+}
+//загрузка страниц админа
+function loadAdminPage($name, $title, $data = [])
+{
+    if(get_cclient()['who'] != 'admin')
+    {
+        exit('У Вас недостаточно прав!');
+    }
+    $params = [
+        'tamplate' => $name,
+        'title' => $title
+    ];
+    if($data != [])
+    {
+        $params = array_merge($params, $data);
+    }
+    extract($params);
+    require_once 'res/tamplate_admin.php';
 }

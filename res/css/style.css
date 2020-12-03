@@ -46,3 +46,38 @@ main .form{
     align-items: center;
     justify-content: center;
 }
+
+.profile-client{
+    width: 100%;
+}
+
+.profile-client-main{
+    display: flex;
+}
+
+.profile-client-main > *{
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.profile-client-photo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 150px;
+    max-width: 150px;
+}
+.profile-client-photo-img{
+    max-width: 100%;
+}
+
+.profile-client-info{
+    margin-left: 16px;
+    width: 100%;
+}
+
+.profile-client-fullname{
+    text-align: center;
+}

@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="container header-content">
-            <h2 class="header-logo">Будь здоров!</h2>
+            <h2 class="header-logo link" href="/admin/">Будь здоров - панель управления!</h2>
 
             <nav class="header-nav">
                 <div class="header-nav-item link" href="/doctor/new/">Добавить врача</div>

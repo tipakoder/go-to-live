@@ -12,8 +12,12 @@
 <body>
     <header>
         <div class="container header-content">
-            <h2 class="header-logo">Будь здоров!</h2>
-
+            <?if(!$auth){?>
+                <h2 class="header-logo link" href="/">Будь здоров!</h2>
+            <?}else{?>
+                <h2 class="header-logo link" href="/profile/">Будь здоров!</h2>
+            <?}?>
+            
             <nav class="header-nav">
                 <?if(!$auth){?>
                     <div class="header-nav-item link" href="/login/">Войти</div>

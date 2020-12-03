@@ -47,8 +47,9 @@ main .form{
     justify-content: center;
 }
 
-.profile-client{
+.profile-client-main{
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .profile-client-main{
@@ -80,4 +81,39 @@ main .form{
 
 .profile-client-fullname{
     text-align: center;
+}
+
+.profile-writes-tabs{
+    border: 1px solid #333;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.profile-writes-tabs > *:first-child{
+    margin-right: auto;
+}
+.profile-writes-tabs > *{
+    margin-right: 16px;
+}
+.profile-writes-tabs > *:last-child{
+    margin-right: 0;
+}
+
+.profile-writes{
+    border: 1px solid #333;
+}
+.profile-writes .write{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #333;
+}
+.profile-writes .write:last-child{
+    border-bottom: 0px;
+}
+.profile-writes .write .op_name{
+    font-family: 'Medium';
 }

@@ -83,7 +83,6 @@ $(document).ready(function(){
         e.preventDefault();
     
         var form = $(this);
-        console.log(form.serialize());
         var url = form.attr('action');
         
         $.ajax({
@@ -95,6 +94,36 @@ $(document).ready(function(){
                 if(data == 'success')
                 {
                     $(location).attr('href', '/profile/');
+                }
+                else if(data == 'success1')
+                {
+                    $(location).attr('href', '/admin/');
+                }
+                else
+                {
+                    alert(data);
+                }
+            }
+        });
+    
+    });
+
+    $('.form-action.doctor').submit(function(e) {
+
+        e.preventDefault();
+    
+        var form = $(this);
+        var url = form.attr('action');
+        
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(),
+            success: function(data)
+            {
+                if(data == 'success')
+                {
+                    $(location).attr('href', '/admin/');
                 }
                 else
                 {

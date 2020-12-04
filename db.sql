@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 04 2020 г., 06:13
+-- Время создания: Дек 04 2020 г., 09:48
 -- Версия сервера: 10.3.22-MariaDB-log
 -- Версия PHP: 7.2.29
 
@@ -42,8 +42,7 @@ CREATE TABLE `accs` (
 --
 
 INSERT INTO `accs` (`id`, `firstname`, `lastname`, `middlename`, `email`, `password`, `who`) VALUES
-(1, 'фыв', 'фыв', 'фыв', 'sarychev.nikita.nn808@gmail.com', '$2y$10$J6S3Z3UocDUuHKFBp1A3AO4uM1IR8pH7orDUM2zHAoJnr.bEszHHm', 'user'),
-(2, 'admin', 'admin', 'admin', 'admin', '$2y$10$ngUXW8yiRCgA4BwhiColVO5ZL2E7GXtvkL.tMW5wmnpgbMhqIvJxW', 'admin');
+(1, 'admin', 'admin', 'admin', 'admin', '$2y$10$ngUXW8yiRCgA4BwhiColVO5ZL2E7GXtvkL.tMW5wmnpgbMhqIvJxW', 'admin');
 
 -- --------------------------------------------------------
 
@@ -55,23 +54,9 @@ CREATE TABLE `accs_sess` (
   `id` int(11) NOT NULL,
   `aid` int(11) NOT NULL,
   `key_sess` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `ip` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `close` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `accs_sess`
---
-
-INSERT INTO `accs_sess` (`id`, `aid`, `key_sess`, `ip`) VALUES
-(1, 1, 'b0ca664288617f830ecb76b791859a7f60e5baa9', '127.0.0.1'),
-(2, 2, '291ef67cba3bf43ad64c5f712d98fbff9161fb32', '127.0.0.1'),
-(3, 2, '3dfd78820316becebba6980c6775b79ac77f350f', '127.0.0.1'),
-(4, 2, 'e8e0fa6abcec0eda5bc410b5f6ddecee38e5d3d9', '127.0.0.1'),
-(5, 1, 'da135fffd9be0f8f503b22baf0a1fc0da5801940', '127.0.0.1'),
-(6, 1, '2b020b34ed3c5d0eb5c9285821e4a741b81a384a', '127.0.0.1'),
-(7, 1, '082832fbc903cb54d295ac3ca0fe1f1f29112962', '127.0.0.1'),
-(8, 1, '5e0583fe100d2bb5d872ea934b9464bb0c41cfc4', '127.0.0.1'),
-(9, 2, '1a6ba4331cb18bb639790ce467b6a39179e63df1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -84,17 +69,6 @@ CREATE TABLE `doctor` (
   `tid` int(11) NOT NULL,
   `fullname` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `doctor`
---
-
-INSERT INTO `doctor` (`id`, `tid`, `fullname`) VALUES
-(1, 2, 'Попов Николай Дмитриевич'),
-(2, 1, 'Лапин Владислав Евгеньевич'),
-(3, 2, 'Фраор Дарья Андреевна'),
-(4, 4, 'Скалкин Андрей Вячеславович'),
-(5, 2, 'Герез ВАЛЕРИЯ Анатольевна');
 
 -- --------------------------------------------------------
 
@@ -132,21 +106,6 @@ CREATE TABLE `writes` (
   `did` int(11) NOT NULL,
   `remove` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `writes`
---
-
-INSERT INTO `writes` (`id`, `aid`, `date`, `option_time`, `did`, `remove`) VALUES
-(1, 1, '2020-12-04', '1', 1, 0),
-(2, 1, '2020-12-04', '2', 1, 0),
-(3, 1, '2020-12-04', '5', 1, 0),
-(4, 1, '2020-12-04', '3', 3, 0),
-(5, 1, '2020-12-04', '5', 3, 0),
-(6, 1, '2020-12-04', '3', 2, 0),
-(7, 1, '2020-12-05', '2', 4, 1),
-(8, 1, '2020-12-03', '1', 1, 0),
-(9, 1, '2020-12-05', '2', 1, 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -190,19 +149,19 @@ ALTER TABLE `writes`
 -- AUTO_INCREMENT для таблицы `accs`
 --
 ALTER TABLE `accs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `accs_sess`
 --
 ALTER TABLE `accs_sess`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `doctor_types`
@@ -214,7 +173,7 @@ ALTER TABLE `doctor_types`
 -- AUTO_INCREMENT для таблицы `writes`
 --
 ALTER TABLE `writes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

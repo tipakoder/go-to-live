@@ -221,7 +221,10 @@ function gen_session($id)
 //отменить сессию
 function rem_session()
 {
+    global $db;
+    $key = $_COOKIE['session'];
     setcookie('session', null, time() - 3600, '/');
+    $db->execute('UPDATE accs_sess SET close = 1 WHERE key_sess = ? LIMIT 1', [$key]);
     header('Location: /');
     exit();
 }

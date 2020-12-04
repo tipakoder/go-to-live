@@ -12,6 +12,6 @@
         </div>
     <? endforeach; ?>
     <div class="list-row cols">
-        <button class=".form-group-button link" style="width:100%; height: 40px;" href="/doctor/new/">Добавить нового специлиста</button>
+        <button class="form-group-button link" style="width:100%; height: 40px; border-radius: 0;" href="/doctor/new/">Добавить нового специлиста</button>
     </div>
 </div>

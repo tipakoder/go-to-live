@@ -9,7 +9,7 @@
 .form-title{
     font-family: Bold;
     font-size: 22px;
-    color: #333;
+    color: #50b0b6;
     margin-bottom: 16px;
     text-align: center;
 }
@@ -25,49 +25,53 @@
 .form-group>*:last-child{margin-right: 0px;}
 
 .form-group-input{
-    border: 1px solid #333;
+    border: 1px solid #50b0b6;
     padding: 10px 16px;
     font-family: 'Regular';
+    border-radius: 8px;
 }
 .form-group-input:focus{
-    border: 2px solid #333;
+    border: 2px solid #50b0b6;
 }
 .form-group-input::placeholder{
-    color: #333;
+    color: #50b0b6;
 }
 
 .form-group-button{
-    background-color: #333;
-    border: 1px solid #333;
+    background-color: #50b0b6;
+    border: 1px solid #50b0b6;
     padding: 10px 16px;
     cursor: pointer;
     color: #FFF;
     font-family: 'Regular';
     transition: 0.3s background-color;
+    border-radius: 8px;
 }
 .form-group-button:hover{
-    background-color: #444444;
+    background-color: #429499;
 }
 
 .el-list{
-    border: 1px solid #333;
+    border: 2px solid #50b0b6;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .el-list .list-row{
     display: flex;
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid #50b0b6;
 }
 .el-list .list-row:last-child{
     border-bottom: 0px;
 }
 .el-list .list-row.cols{
-    background-color: #eee;
+    background-color: #ebfdfe;
 }
 .el-list .list-row.cols>*{
     font-family: 'Medium';
 }
 .el-list .list-row-col{
-    border-right: 1px solid #333;
+    border-right: 2px solid #50b0b6;
     padding: 16px;
 }
 .el-list .list-row-col:last-child{
@@ -81,11 +85,13 @@
 .cards-el > .card{
     padding: 16px;
     margin-right: 16px;
-    border: 1px solid #333;
+    border: 2px solid #50b0b6;
+    border-radius: 8px;
     width: 25%;
 }
 .cards-el > .card:last-child{margin-right: 0;}
 
 .card-text-name{
     margin-bottom: 16px;
+    color: #50b0b6;
 }

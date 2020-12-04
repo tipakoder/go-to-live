@@ -311,7 +311,6 @@ function doctor_add()
 
     $fullname = $_POST['fullname'];
     $type = $_POST['type'];
-    $description = $_POST['description'];
 
     switch($type)
     {
@@ -334,7 +333,7 @@ function doctor_add()
 
     if($type != null)
     {
-        if($db->execute('INSERT INTO doctor (tid, fullname, description) VALUES (?, ?)', [$type, $fullname, $description]))
+        if($db->execute('INSERT INTO doctor (tid, fullname) VALUES (?, ?)', [$type, $fullname]))
         {
             exit('success');
         }   

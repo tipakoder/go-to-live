@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 04 2020 г., 02:20
+-- Время создания: Дек 04 2020 г., 06:13
 -- Версия сервера: 10.3.22-MariaDB-log
 -- Версия PHP: 7.2.29
 
@@ -68,7 +68,10 @@ INSERT INTO `accs_sess` (`id`, `aid`, `key_sess`, `ip`) VALUES
 (3, 2, '3dfd78820316becebba6980c6775b79ac77f350f', '127.0.0.1'),
 (4, 2, 'e8e0fa6abcec0eda5bc410b5f6ddecee38e5d3d9', '127.0.0.1'),
 (5, 1, 'da135fffd9be0f8f503b22baf0a1fc0da5801940', '127.0.0.1'),
-(6, 1, '2b020b34ed3c5d0eb5c9285821e4a741b81a384a', '127.0.0.1');
+(6, 1, '2b020b34ed3c5d0eb5c9285821e4a741b81a384a', '127.0.0.1'),
+(7, 1, '082832fbc903cb54d295ac3ca0fe1f1f29112962', '127.0.0.1'),
+(8, 1, '5e0583fe100d2bb5d872ea934b9464bb0c41cfc4', '127.0.0.1'),
+(9, 2, '1a6ba4331cb18bb639790ce467b6a39179e63df1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -90,7 +93,8 @@ INSERT INTO `doctor` (`id`, `tid`, `fullname`) VALUES
 (1, 2, 'Попов Николай Дмитриевич'),
 (2, 1, 'Лапин Владислав Евгеньевич'),
 (3, 2, 'Фраор Дарья Андреевна'),
-(4, 4, 'Скалкин Андрей Вячеславович');
+(4, 4, 'Скалкин Андрей Вячеславович'),
+(5, 2, 'Герез ВАЛЕРИЯ Анатольевна');
 
 -- --------------------------------------------------------
 
@@ -141,7 +145,8 @@ INSERT INTO `writes` (`id`, `aid`, `date`, `option_time`, `did`, `remove`) VALUE
 (5, 1, '2020-12-04', '5', 3, 0),
 (6, 1, '2020-12-04', '3', 2, 0),
 (7, 1, '2020-12-05', '2', 4, 1),
-(8, 1, '2020-12-03', '1', 1, 0);
+(8, 1, '2020-12-03', '1', 1, 0),
+(9, 1, '2020-12-05', '2', 1, 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -191,13 +196,13 @@ ALTER TABLE `accs`
 -- AUTO_INCREMENT для таблицы `accs_sess`
 --
 ALTER TABLE `accs_sess`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `doctor_types`
@@ -209,7 +214,7 @@ ALTER TABLE `doctor_types`
 -- AUTO_INCREMENT для таблицы `writes`
 --
 ALTER TABLE `writes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

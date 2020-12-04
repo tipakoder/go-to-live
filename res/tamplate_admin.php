@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$title?></title>
+    <link href="/res/img/logo.ico" rel="shortcut icon">
     <link href="/res/css/fonts.css" rel="stylesheet">
     <link href="/res/css/style.css" rel="stylesheet">
     <link href="/res/css/elements.css" rel="stylesheet">
@@ -12,7 +13,10 @@
 <body>
     <header>
         <div class="container header-content">
-            <h2 class="header-logo link" href="/admin/">Будь здоров - панель управления!</h2>
+            <div class="header-logo link" href="/admin/">
+                <img src="/res/img/logotype.png" alt="" class="header-logo-image">
+                <h2 class="header-logo-text">Панель управления</h2>
+            </div>
 
             <nav class="header-nav">
                 <div class="header-nav-item link" href="/doctor/new/">Добавить врача</div>

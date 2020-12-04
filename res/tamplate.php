@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$title?></title>
+    <link href="/res/img/logo.ico" rel="shortcut icon">
     <link href="/res/css/fonts.css" rel="stylesheet">
     <link href="/res/css/style.css" rel="stylesheet">
     <link href="/res/css/elements.css" rel="stylesheet">
@@ -13,9 +14,13 @@
     <header>
         <div class="container header-content">
             <?if(!$auth){?>
-                <h2 class="header-logo link" href="/">Будь здоров!</h2>
+                <div class="header-logo link" href="/">
+                    <img src="/res/img/logotype.png" alt="" class="header-logo-image">
+                </div>
             <?}else{?>
-                <h2 class="header-logo link" href="/profile/">Будь здоров!</h2>
+                <div class="header-logo link" href="/profile/">
+                    <img src="/res/img/logotype.png" alt="" class="header-logo-image">
+                </div>
             <?}?>
             
             <nav class="header-nav">

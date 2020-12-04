@@ -14,12 +14,21 @@
 }
 
 header{
-    background-color: #d6382d;
+    background-color: #fff;
+    border-bottom: 5px solid #50b0b6;
+}
+header .header-logo{
+    display: flex;
+    align-items: center;
+}
+header .header-logo-image{
+    max-height: 40px;
+    margin-right: 16px;
 }
 header .header-content{
     display: flex;
     align-items: center;
-    color: #FFF;
+    color:  #429499;
 }
 
 header .header-nav{
@@ -28,13 +37,14 @@ header .header-nav{
 }
 
 header .header-nav-item{
-    padding: 10px;
-    transition: 0.3s background-color;
+    padding: 26px;
+    transition: 0.3s background-color, color;
 }
 
 header .header-nav-item:hover{
     cursor: pointer;
-    background-color:  #b8261c;
+    background-color:  #50b0b6;
+    color: #FFF;
 }
 
 main{
@@ -57,7 +67,7 @@ main .form{
 }
 
 .profile-client-main > *{
-    background-color: #eee;
+    border: 2px solid #50b0b6;
     border-radius: 8px;
     padding: 16px;
 }
@@ -84,11 +94,12 @@ main .form{
 }
 
 .profile-writes-tabs{
-    border: 1px solid #333;
+    border: 2px solid #50b0b6;
     padding: 16px;
     display: flex;
     align-items: center;
     margin-bottom: 16px;
+    border-radius: 8px;
 }
 
 .profile-writes-tabs > *:first-child{
@@ -102,14 +113,16 @@ main .form{
 }
 
 .profile-writes{
-    border: 1px solid #333;
+    border: 2px solid #50b0b6;
+    border-radius: 8px;
+    overflow: hidden;
 }
 .profile-writes .write{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid #50b0b6;
 }
 .profile-writes .write:last-child{
     border-bottom: 0px;

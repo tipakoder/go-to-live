@@ -13,9 +13,6 @@
             </select>
         </div>
         <div class="form-group">
-            <textarea name="description" class="form-group-input">Добавить врача</textarea>
-        </div>
-        <div class="form-group">
             <button class="form-group-button">Добавить врача</button>
         </div>
     </form>

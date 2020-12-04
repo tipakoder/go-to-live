@@ -27,7 +27,7 @@
 
             <div class="write-option">
                 <span class="op_name">Время:</span>
-                <span class="op_val"><?
+                <span class="op_val time"><?
                     $nums = [[1, '08:00'], [2, '12:00'], [3, '14:00'], [4, '16:00'], [5, '18:00']];
                     foreach($nums as $num)
                     {
